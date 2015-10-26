@@ -5,5 +5,7 @@
   <%= @story.title %>
 </p>
 
+<%= link_to 'Add A Page', new_story_page_path(@story) %> |
+<%= link_to 'Pages', story_pages_path(@story) %> |
 <%= link_to 'Edit', edit_story_path(@story) %> |
 <%= link_to 'Back', stories_path %>

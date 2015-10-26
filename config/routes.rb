@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
-  resources :pages
-  resources :stories
+  resources :stories do
+    resources :pages
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'static#index'
+  get '/how-to-distribute', to: 'static#how_to_distribute', as: :how_to_distribute
+  get '/contributing', to: 'static#contributing_a_story', as: :contributing
+  get '/search', to: 'search#new', as: :search
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

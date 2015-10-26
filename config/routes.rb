@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :stories do
     resources :pages
+    resources :audio_transcriptions
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

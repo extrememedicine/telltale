@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151026095142) do
+ActiveRecord::Schema.define(version: 20151026131023) do
+
+  create_table "audio_transcriptions", force: :cascade do |t|
+    t.string   "audio_file_file_name"
+    t.string   "audio_file_content_type"
+    t.integer  "audio_file_file_size"
+    t.datetime "audio_file_updated_at"
+    t.text     "language"
+    t.text     "notes"
+    t.integer  "story_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "pages", force: :cascade do |t|
     t.integer  "story_id"
@@ -21,14 +33,19 @@ ActiveRecord::Schema.define(version: 20151026095142) do
     t.integer  "text_position_top"
     t.integer  "text_position_left"
     t.text     "status"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "artwork_image_file_name"
+    t.string   "artwork_image_content_type"
+    t.integer  "artwork_image_file_size"
+    t.datetime "artwork_image_updated_at"
   end
 
   create_table "stories", force: :cascade do |t|
     t.text     "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "description"
   end
 
 end

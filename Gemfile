@@ -26,6 +26,7 @@ gem 'paperclip', '~> 4.2.0'
 gem 'browserify-rails', '~> 1.0'
 gem 'virtus'
 gem 'simple_form', '3.1.0'
+gem 'aws-sdk-v1'
 
 group :development do
   gem 'spring'

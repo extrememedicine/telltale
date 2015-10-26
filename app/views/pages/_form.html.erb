@@ -1,4 +1,4 @@
-<%= form_for([@story, @page]) do |f| %>
+<%= simple_form_for([@story, @page]) do |f| %>
   <% if @page.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@page.errors.count, "error") %> prohibited this page from being saved:</h2>
@@ -11,29 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field-group">
     <%= f.label :order_number %><br>
     <%= f.number_field :order_number %>
   </div>
-  <div class="field">
+  <div class="field-group">
     <%= f.label :content_raw %><br>
     <%= f.text_area :content_raw %>
   </div>
-  <div class="field">
+  <div class="field-group">
     <%= f.label :text_colour %><br>
     <%= f.text_area :text_colour %>
   </div>
-  <div class="field">
+  <div class="field-group">
     <%= f.label :text_position_top %><br>
     <%= f.number_field :text_position_top %>
   </div>
-  <div class="field">
+  <div class="field-group">
     <%= f.label :text_position_left %><br>
     <%= f.number_field :text_position_left %>
   </div>
-  <div class="field">
+  <div class="field-group">
     <%= f.label :status %><br>
     <%= f.text_area :status %>
+  </div>
+  <div class="field-group">
+    <%= f.input :artwork_image, as: :file %>
   </div>
   <div class="actions">
     <%= f.submit %>

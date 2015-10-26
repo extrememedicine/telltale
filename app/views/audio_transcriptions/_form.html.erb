@@ -1,0 +1,22 @@
+<%= simple_form_for([@story, @audio_transcription]) do |f| %>
+  <% if @audio_transcription.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@audio_transcription.errors.count, "error") %> prohibited this page from being saved:</h2>
+
+      <ul>
+      <% @audio_transcription.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.input :story_id, as: :integer %>
+  </div>
+  <div class="field">
+    <%= f.input :audio_file, as: :file %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,11 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <p id="notice"><%= notice %></p>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @story.title %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="
+      col-lg-6 col-lg-offset-3
+    ">
+      <h1>
+        <%= @story.title %>
+      </h1>
+      <% if @story.pages.count > 0 %>
+      <% else %>
+        <h2 class="text-muted">
+          You're ready to upload the first page of your story. Ideally, each page would have an image and some text.
+        </h2>
+        <p class="text-muted heading-font">
+          Don't worry if you can't produce everything, you can encourage someone to contribute the other parts later.
+        </p>
+        
+        <%= link_to 'Add A Page', new_story_page_path(@story), class: 'btn btn-primary btn-lg' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="
+      col-lg-6 col-lg-offset-3
+    ">
+      <br><br>
+      <%= link_to 'Add An Audio Descripion', new_story_audio_transcription_path(@story) %> |
+      <%= link_to 'Pages', story_pages_path(@story) %> |
+      <%= link_to 'Edit', edit_story_path(@story) %> |
+      <%= link_to 'Back', stories_path %>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'Add A Page', new_story_page_path(@story) %> |
-<%= link_to 'Pages', story_pages_path(@story) %> |
-<%= link_to 'Edit', edit_story_path(@story) %> |
-<%= link_to 'Back', stories_path %>
+

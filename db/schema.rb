@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151026131023) do
+ActiveRecord::Schema.define(version: 20151026145351) do
 
   create_table "audio_transcriptions", force: :cascade do |t|
     t.string   "audio_file_file_name"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20151026131023) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.text     "description"
+    t.text     "status"
   end
 
 end

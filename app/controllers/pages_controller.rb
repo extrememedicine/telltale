@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   # GET /pages
   # GET /pages.json
   def index
-    @pages = @story.pages.all
+    @pages = @story.pages.order('order_number asc').all
   end
 
   # GET /pages/1
@@ -29,7 +29,7 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to [@story, @page], notice: 'Page was successfully created.' }
+        format.html { redirect_to story_pages_path(@story), notice: 'Page was successfully created.' }
         format.json { render :show, status: :created, location: @page }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class PagesController < ApplicationController
   def update
     respond_to do |format|
       if @page.update(page_params)
-        format.html { redirect_to [@story, @page], notice: 'Page was successfully updated.' }
+        format.html { redirect_to story_pages_path(@story), notice: 'Page was successfully updated.' }
         format.json { render :show, status: :ok, location: @page }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class PagesController < ApplicationController
   def destroy
     @page.destroy
     respond_to do |format|
-      format.html { redirect_to pages_url, notice: 'Page was successfully destroyed.' }
+      format.html { redirect_to story_pages_url(@story), notice: 'Page was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

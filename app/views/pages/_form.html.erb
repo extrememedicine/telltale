@@ -10,35 +10,53 @@
       </ul>
     </div>
   <% end %>
+  <div class="form-group">
+    <div class="form-group">
+      <%= f.input :artwork_image, as: :file, label: 'Please select the artwork for this page.' %>
+      <br>
+      <p class="text-muted">
+        Files should be uploaded as .jpg at 2480px x 3507px
+      </p>
+    </div>
 
-  <div class="field-group">
-    <%= f.label :order_number %><br>
-    <%= f.number_field :order_number %>
+    <div class="form-group">
+      <%= f.label :content_raw, 'Enter the content for this page.' %>
+      <br>
+      <%= f.input :content_raw, as: :text, label: false, input_html: {
+        class: 'form-control', style: 'height: 125px;' } %>
+    </div>
   </div>
-  <div class="field-group">
-    <%= f.label :content_raw %><br>
-    <%= f.text_area :content_raw %>
-  </div>
-  <div class="field-group">
-    <%= f.label :text_colour %><br>
-    <%= f.text_area :text_colour %>
-  </div>
-  <div class="field-group">
-    <%= f.label :text_position_top %><br>
-    <%= f.number_field :text_position_top %>
-  </div>
-  <div class="field-group">
-    <%= f.label :text_position_left %><br>
-    <%= f.number_field :text_position_left %>
-  </div>
-  <div class="field-group">
-    <%= f.label :status %><br>
-    <%= f.text_area :status %>
-  </div>
-  <div class="field-group">
-    <%= f.input :artwork_image, as: :file %>
+  <div style="max-width: 320px;">
+    <div class="form-group">
+      <%= f.label :order_number %><br>
+      <%= f.input :order_number, as: :integer, label: false, input_html: {
+        class: 'form-control' } %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :text_colour %><br>
+      <%= f.input :text_colour, as: :string, label: false, input_html: {
+        class: 'form-control' } %>
+    </div>
+    <div class="form-group">
+      <%= f.label :text_position_top %><br>
+      <%= f.input :text_position_top, as: :string, label: false, input_html: {
+        class: 'form-control' } %>
+    </div>
+    <div class="form-group">
+      <%= f.label :text_position_left %><br>
+      <%= f.input :text_position_left, as: :string, label: false, input_html: {
+        class: 'form-control' } %>
+    </div>
+    <div class="form-group">
+      <%= f.label :status %><br>
+      <%= f.input :status, as: :text, label: false, input_html: {
+        class: 'form-control' } %>
+    </div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <br><br>
+    <%= f.hidden_field :story_id, value: @story.id %>
+    <%= f.submit class: 'btn btn-primary btn-lg' %>
   </div>
 <% end %>

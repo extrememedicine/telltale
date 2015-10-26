@@ -1,7 +1,36 @@
-<h1>Search for a story</h1>
-<div class="form">
-  <%= simple_form_for(@search, url: search_path) do |f| %>
-    <%= f.input :story_title %>
-    <%= f.submit 'Find A Story', class: 'btn btn-primary' %>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="text-center">
+        <h1>Search for a story</h1>
+        <div class="form">
+          <%= simple_form_for(@search, url: search_path) do |f| %>
+            <%= f.label :story_title, 'What\'s the story called?' %>
+            <%= f.input :story_title, input_html: {
+                class: 'form-control', style: 'max-width: 300px; margin-left: auto; margin-right: auto; font-size: 25px; margin-bottom: 10px;' }, label: false %>
+            <%= f.submit 'Find A Story', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <section class="col-md-6 col-lg-6">
+      <h1 class="h3">Find stories you can contribute to.</h1>
+      <p>
+        As new stories get added, helping explain crisis situation to children, we need your help to make them available to as many people as possible by translating them into many languages.
+      </p>
+    </section>
+    <section class="col-md-6 col-lg-6">
+      <h1 class="h3">Find stories you can distribute.</h1>
+      <p>
+        If you can print, or otherwise distribute PDF files to areas where small children are in crisis and may need some new characters to help them through, you can search by topic to find the right stories.
+      </p>
+    </section>
+  </div>
+
 </div>
+
+

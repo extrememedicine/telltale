@@ -1,6 +1,6 @@
 
 class StoriesController < ApplicationController
-  before_action :set_story, only: [:show, :edit, :update, :destroy]
+  before_action :set_story, only: [:show, :edit, :update, :destroy, :publish]
 
   # GET /stories
   # GET /stories.json
@@ -20,6 +20,18 @@ class StoriesController < ApplicationController
 
   # GET /stories/1/edit
   def edit
+  end
+
+  def publish
+    respond_to do |format|
+      if @story.update(status: 'published')
+        format.html { redirect_to @story, notice: 'Your story has been published!' }
+        format.json { render :show, status: :created, location: @story }
+      else
+        format.html { render :new }
+        format.json { render json: @story.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # POST /stories

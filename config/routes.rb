@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :stories do
+    member do
+      get '/publish', to: 'stories#publish', as: :publish
+    end
     resources :pages
     resources :audio_transcriptions
   end

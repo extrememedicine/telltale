@@ -14,30 +14,136 @@
       <h1>
         <%= @story.title %>
       </h1>
-      <% if @story.pages.count > 0 %>
+      <% if @story.published? %>
+        <section>
+          <div class="text-center">
+            <%= image_tag @story.pages.order('order_number asc').first.artwork_image.url(:medium) %>
+          </div>
+          <h1 class="h3 text-center text-success">
+            Your story has been published.
+          </h1>
+        </section>
       <% else %>
-        <h2 class="text-muted">
-          You're ready to upload the first page of your story. Ideally, each page would have an image and some text.
-        </h2>
-        <p class="text-muted heading-font">
-          Don't worry if you can't produce everything, you can encourage someone to contribute the other parts later.
-        </p>
-        
-        <%= link_to 'Add A Page', new_story_page_path(@story), class: 'btn btn-primary btn-lg' %>
+        <% if @story.pages.count > 0 %>
+          <h2 class="text-muted">
+            You've added <%= pluralize(@story.pages.count, 'page') %> so far, but you can always <%= link_to 'add another page', new_story_page_path(@story) %>.
+          </h2>
+          <p>
+            When you're ready, you can <%= link_to 'publish this story', publish_story_path(@story) %> so others can translate and distribute it to children around the world.
+          </p>
+        <% else %>
+          <h2 class="text-muted">
+            You're ready to upload the first page of your story. Ideally, each page would have an image and some text.
+          </h2>
+          <p class="text-muted heading-font">
+            Don't worry if you can't produce everything, you can encourage someone to contribute the other parts later.
+          </p>
+          <%= link_to 'Add A Page', new_story_page_path(@story), class: 'btn btn-primary btn-lg' %>
+        <% end %>
       <% end %>
     </div>
   </div>
+  <% if @story.published? %>
+    <br><br>
+    <div class="row">
+      <div class="
+        col-lg-6 col-lg-offset-3
+      ">
+        <table class="table">
+          <tr>
+            <td style="width: 50px;">
+              <div style="font-size: 30px; line-height: 1em;">🇬🇧</div>
+            </td>
+            <td>
+              <div class="btn btn-primary">
+                Generate PDF in English
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 50px;">
+              <div style="font-size: 30px; line-height: 1em;">🇫🇷</div>
+            </td>
+            <td>
+              <div class="btn btn-primary">
+                Generate PDF in French
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 50px;">
+              <div style="font-size: 30px; line-height: 1em;">🇪🇬</div>
+            </td>
+            <td>
+              <div class="btn btn-primary">
+                Generate PDF in Egyptian
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <div class="row">
+      <div class="
+        col-lg-6 col-lg-offset-3
+      ">
+        <h3>
+          Want to hear the story told by a storyteller in your language?
+        </h3>
+        <table class="table">
+          <tr>
+            <td style="width: 50px;">
+              <div style="font-size: 30px; line-height: 1em;">🇬🇧</div>
+            </td>
+            <td>
+              <div>
+                To hear this story told in English call:
+                <div style="font-size: 30px">
+                  +44 1704 450 150
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="width: 50px;">
+              <div style="font-size: 30px; line-height: 1em;">🇫🇷</div>
+            </td>
+            <td>
+              <div>
+                To hear this story told in French call:
+                <div style="font-size: 30px">
+                  +44 1202 629 709
+                </div>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  <% end %>
+  
   <div class="row">
     <div class="
       col-lg-6 col-lg-offset-3
     ">
-      <br><br>
-      <%= link_to 'Add An Audio Descripion', new_story_audio_transcription_path(@story) %> |
-      <%= link_to 'Pages', story_pages_path(@story) %> |
-      <%= link_to 'Edit', edit_story_path(@story) %> |
-      <%= link_to 'Back', stories_path %>
+      <% if @story.pages.count > 0 %>
+        <div class="form-group">
+          <%= link_to 'Add An Audio Transcription', new_story_audio_transcription_path(@story), class: 'btn btn-primary' %>
+        </div>
+
+        <div class="form-group">
+          <%= link_to 'See All Pages', story_pages_path(@story), class: 'btn btn-default' %>
+          <%= link_to 'Edit Story Details', edit_story_path(@story), class: 'btn btn-default' %>
+        </div>
+      <% end %>
+      <br>
+      <br>
+      <div class="form-group">
+        <%= link_to 'Back', stories_path %>
+      </div>
     </div>
   </div>
+  
 </div>
 
 

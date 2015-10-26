@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_number: 1
+  content_raw: MyText
+  text_colour: MyText
+  text_position_top: 1
+  text_position_left: 1
+  status: MyText
+
+two:
+  order_number: 1
+  content_raw: MyText
+  text_colour: MyText
+  text_position_top: 1
+  text_position_left: 1
+  status: MyText

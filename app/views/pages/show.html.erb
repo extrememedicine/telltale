@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order number:</strong>
+  <%= @page.order_number %>
+</p>
+
+<p>
+  <strong>Content raw:</strong>
+  <%= @page.content_raw %>
+</p>
+
+<p>
+  <strong>Text colour:</strong>
+  <%= @page.text_colour %>
+</p>
+
+<p>
+  <strong>Text position top:</strong>
+  <%= @page.text_position_top %>
+</p>
+
+<p>
+  <strong>Text position left:</strong>
+  <%= @page.text_position_left %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @page.status %>
+</p>
+
+<%= link_to 'Edit', edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>
